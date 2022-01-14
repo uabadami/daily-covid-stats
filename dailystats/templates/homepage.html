@@ -18,6 +18,8 @@
 <body class="bg-light">
 
     <div>
+        <br>
+        
         <div class="container d-flex justify-content-center page-header bg-secondary">
             <h1><a href="" style="color: inherit; text-decoration: inherit;">Daily COVID-19 Statistics</a></h1>
         </div>
@@ -67,7 +69,7 @@
             var distElem = document.getElementById("sentence");
             formattedCases = ({{dailyCases}}).toLocaleString()
             formattedDeaths = ({{dailyDeaths}}).toLocaleString()
-            distElem.innerHTML = `<b>{{country}}: Today, <span class="text-danger">${formattedCases}</span> new COVID-19 cases were identified, and <span class="text-danger">${formattedDeaths}</span> people died of COVID-19.</b>`
+            distElem.innerHTML = `<b><span class="text-danger">{{country}}</span>: Today, <span class="text-danger">${formattedCases}</span> new COVID-19 cases were identified, and <span class="text-danger">${formattedDeaths}</span> people died of COVID-19.</b>`
 
         {% endif%}
 
@@ -81,7 +83,7 @@
     <br>
 
     <div class="navbar justify-content-center fixed-bottom bg-secondary">
-        Data sources: &nbsp <a href="https://github.com/owid/covid-19-data" class="text-info">COVID-19 Dataset by Our World in Data</a>&nbsp and &nbsp<a href="https://github.com/konstantinstadler/country_converter" class="text-info">country converter</a>
+        Data source: &nbsp <a href="https://ourworldindata.org/coronavirus" class="text-info">COVID-19 Dataset by Our World in Data</a>
     </div>
 </body>
 

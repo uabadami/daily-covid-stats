@@ -69,7 +69,23 @@
             var distElem = document.getElementById("sentence");
             formattedCases = ({{dailyCases}}).toLocaleString()
             formattedDeaths = ({{dailyDeaths}}).toLocaleString()
-            distElem.innerHTML = `<b><span class="text-danger">{{country}}</span>: Today, <span class="text-danger">${formattedCases}</span> new COVID-19 cases were identified, and <span class="text-danger">${formattedDeaths}</span> people died of COVID-19.</b>`
+            formattedHospitals = ({{dailyHospitals}}).toLocaleString()
+            formattedICUs = ({{dailyICUs}}).toLocaleString()
+
+            if (formattedHospitals == "-1") {
+                formattedHospitals = "Unknown";
+            };
+            if (formattedICUs == "-1") {
+                formattedICUs = "Unknown";
+            };
+
+            distElem.innerHTML = `<b><span class="text-danger">{{country}}, today</span>: <br/> <br/>
+                <ul>
+                <li> <span class="text-danger">${formattedCases}</span> new COVID-19 cases. </li>
+                <li> <span class="text-danger">${formattedDeaths}</span> people died of COVID-19. </li>
+                <li> <span class="text-danger">${formattedHospitals}</span> people were in the hospital with COVID-19. </li>
+                <li> <span class="text-danger">${formattedICUs}</span> people were in the ICU with COVID-19. </b> </li>
+                </ul> </b>`
 
         {% endif%}
 

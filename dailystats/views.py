@@ -46,6 +46,16 @@ def getHomepage(request):
     countryData = dataBack[countryCode]
     dailyCases = countryData['new_cases']
     dailyDeaths = countryData['new_deaths']
+    dailyHospitals = countryData['hosp_patients']
+    dailyICUs = countryData['icu_patients']
+
+    necessaryData = [dailyCases, dailyDeaths, dailyHospitals, dailyICUs]
+
+    for i in range(len(necessaryData)):
+        if necessaryData[i] != None:
+            necessaryData[i] = int(necessaryData[i])
+        else:
+            necessaryData[i] = -1
 
 
-    return render(request, 'homepage.html', {'country': countryName, 'dailyCases': int(dailyCases), 'dailyDeaths': int(dailyDeaths), 'form': form})
+    return render(request, 'homepage.html', {'country': countryName, 'dailyCases': necessaryData[0], 'dailyDeaths': necessaryData[1], 'dailyHospitals': necessaryData[2], 'dailyICUs': necessaryData[3], 'form': form})
